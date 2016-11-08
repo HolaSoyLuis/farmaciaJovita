@@ -126,7 +126,7 @@ Stock s = new Stock();
                 precioVentaActionPerformed(evt);
             }
         });
-        getContentPane().add(precioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 80, 20));
+        getContentPane().add(precioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 80, 20));
 
         precioCompra.setForeground(new java.awt.Color(204, 204, 255));
         precioCompra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -144,7 +144,7 @@ Stock s = new Stock();
                 precioCompraActionPerformed(evt);
             }
         });
-        getContentPane().add(precioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 20));
+        getContentPane().add(precioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 80, 20));
 
         cantidadMinima.setForeground(new java.awt.Color(204, 204, 255));
         cantidadMinima.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -263,13 +263,17 @@ Stock s = new Stock();
         });
         getContentPane().add(CodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 140, 20));
 
-        jButton1.setText("Agregar Categoria");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesPaneles/iconocategoria.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 130, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 40, -1));
 
         jBguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesPaneles/Guardarg.png"))); // NOI18N
         jBguardar.setAlignmentY(0.0F);

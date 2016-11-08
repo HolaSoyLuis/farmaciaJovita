@@ -91,10 +91,12 @@ public class ModificarUsuario extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jTcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 210, 30));
 
-        jBeliminar.setText("ELIMINAR US");
+        jBeliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesMenu/UC/Eliminar_1.png"))); // NOI18N
         jBeliminar.setAlignmentY(0.0F);
         jBeliminar.setBorder(null);
-        getContentPane().add(jBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 120, 40));
+        jBeliminar.setBorderPainted(false);
+        jBeliminar.setContentAreaFilled(false);
+        getContentPane().add(jBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 140, 40));
 
         jBagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesMenu/UC/agregar.png"))); // NOI18N
         jBagregar.setAlignmentY(0.0F);

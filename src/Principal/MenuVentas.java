@@ -204,7 +204,7 @@ String id="";
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 320, 100, 70));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesMenu/UC/ADD CLIENTE.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesMenu/UC/CANTIDAD.png"))); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -240,13 +240,16 @@ String id="";
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 510, 100, 70));
 
-        add.setText("ADD");
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesMenu/UC/ADD CLIENTE.png"))); // NOI18N
+        add.setBorder(null);
+        add.setBorderPainted(false);
+        add.setContentAreaFilled(false);
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
-        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 140, -1, -1));
+        getContentPane().add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 140, -1, -1));
 
         getAccessibleContext().setAccessibleName("");
 

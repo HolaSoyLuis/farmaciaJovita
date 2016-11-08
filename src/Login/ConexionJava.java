@@ -23,7 +23,8 @@ public static Connection conn=null;
              Class.forName("com.mysql.jdbc.Driver").newInstance(); 
                 
              //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=01234");
-             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=root");
+             //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=root");
+             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=Gloria.");
        //  JOptionPane.showMessageDialog(null, "Conexion exitosa");
              
             

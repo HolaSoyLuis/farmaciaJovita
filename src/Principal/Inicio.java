@@ -69,8 +69,6 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
 
         logoFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/splashface/Images/fondo.png"))); // NOI18N
 
-        jDesktopPane1.setLayer(logoFondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -87,6 +85,7 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
                 .addComponent(logoFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
+        jDesktopPane1.setLayer(logoFondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 730));
 
@@ -279,6 +278,11 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         jMenuItem18.setBorder(null);
         jMenuItem18.setContentAreaFilled(false);
         jMenuItem18.setIconTextGap(2);
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem18);
 
         JMenuBar1.add(jMenu2);
@@ -472,6 +476,18 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         av.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         av.show();
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+         // Reiniciar App
+        System.err.println("Someone is Restarting me...");
+        setVisible(false);
+        try {
+    Thread.sleep(5000);
+        } catch (InterruptedException e1) {
+          e1.printStackTrace();
+        }
+setVisible(true);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     /**
      * @param args the command line arguments
