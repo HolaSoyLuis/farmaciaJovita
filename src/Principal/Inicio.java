@@ -247,6 +247,11 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         jMenuItem15.setAlignmentY(0.0F);
         jMenuItem15.setBorder(null);
         jMenuItem15.setContentAreaFilled(false);
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem15);
 
         JMenuBar1.add(jMenu1);
@@ -457,6 +462,16 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         this.jDesktopPane1.add(rv);
         rv.show();
     }//GEN-LAST:event_jMVentasActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+      // ARTICULOS A VENCER
+        ArticulosaVencer av = new ArticulosaVencer();
+        this.jDesktopPane1.add(av);    
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = av.getSize();
+        av.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        av.show();
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     /**
      * @param args the command line arguments
