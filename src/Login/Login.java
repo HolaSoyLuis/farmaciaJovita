@@ -109,6 +109,7 @@ PreparedStatement pst=null;
         //ESTE ES EL BOTON PARA INGRESAR EL LOGIIN\
         
         //un rapidin
+        //Otro Rapidin
         this.validar();
     }//GEN-LAST:event_jBEntrarActionPerformed
 
