@@ -16,6 +16,7 @@ import javax.swing.UIManager;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
+
 /**
  *
  * @author yovelasquez
@@ -25,30 +26,44 @@ public class AñadirMercaderia extends javax.swing.JInternalFrame {
     /**
      * Creates new form AñadirMercaderia
      */
+    Stock s= new Stock();
     private TableRowSorter trsFiltro;
     public AñadirMercaderia() {
+                
+        initComponents();
         //Aplicar LookAndFeel nimbus para poner las ventanas transparentes
         try {
             UIManager.setLookAndFeel(new McLaFNimbus());
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        
-        initComponents();
+        this.mostrarArticulos();
 
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        String sql = "select idArticulo as ID, CodigoBarras as 'Codigo de Barras', nombreArticulo as Nombre, Lote, Fecha_Vencimiento as Vencimiento, PrecioVenta as Precio, Cantidad, Descripcion from articulo";
-        try {
-            pst = ConexionJava.Conectar().prepareStatement(sql);
-            rs = pst.executeQuery();
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Fatal Error D:");
-        }
-        codigoBarras.requestFocus();
-        codigoBarras.requestFocusInWindow();
     }
+    
+//MUESTRA ARTICULOS LA TABA
+    public void mostrarArticulos(){
+        
+    String sql="SELECT NombreArticulo,Cantidad_Minima,Lote,Nombre as Categoria,Fecha_Vencimiento FROM articulo inner join categoria\n" + //Envia la cadena al metodo al metodo mostrar tabla de la clase Stock
+    "on articulo.Categoria_idCategoria= categoria.idCategoria";
+    
+      s.Mostrar(sql); //LLama al metodo  Mostrar de la clase Articulo
+     this.jTable1.setModel(s.modelo); //Establece el modelo en la taba
+                    
+//        PreparedStatement pst = null;
+//        ResultSet rs = null;
+//        String sql = "select idArticulo as ID, CodigoBarras as 'Codigo de Barras', nombreArticulo as Nombre, Lote, Fecha_Vencimiento as Vencimiento, PrecioVenta as Precio, Cantidad, Descripcion from articulo";
+//        try {
+//            pst = ConexionJava.Conectar().prepareStatement(sql);
+//            rs = pst.executeQuery();
+//            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Fatal Error D:");
+//        }
+//        codigoBarras.requestFocus();
+//        codigoBarras.requestFocusInWindow();
+    }//FINALIZA MOSTRAR ARTICULOS
+    
 
 //CAMBIAR EL ASPECTO DEL JINTERNALFRAME "TRANSPARENTE"
     @Override
@@ -90,7 +105,7 @@ public class AñadirMercaderia extends javax.swing.JInternalFrame {
                 codigoBarrasKeyTyped(evt);
             }
         });
-        getContentPane().add(codigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 190, 40));
+        getContentPane().add(codigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 190, 40));
 
         comboFiltro.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
         comboFiltro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CODIGO", "NOMBRE" }));
@@ -108,7 +123,7 @@ public class AñadirMercaderia extends javax.swing.JInternalFrame {
                 comboFiltroMouseClicked(evt);
             }
         });
-        getContentPane().add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 100, 40));
+        getContentPane().add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 100, 40));
 
         jButton1.setText("NUEVO PRODUCTO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,10 +131,15 @@ public class AñadirMercaderia extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, 40));
 
-        jButton2.setText("AGREGAR");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 140, 40));
+        jButton2.setText("EDITAR PRODUCTO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 140, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,7 +167,7 @@ public class AñadirMercaderia extends javax.swing.JInternalFrame {
         Dimension FrameSize = is.getSize();
         is.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
         is.show();
-        //dispose();
+          dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void codigoBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoBarrasMouseClicked
@@ -204,6 +224,11 @@ public class AñadirMercaderia extends javax.swing.JInternalFrame {
         //            codigoBarras.requestFocusInWindow();
 
     }//GEN-LAST:event_comboFiltroMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // nueva cantidad
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
