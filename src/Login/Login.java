@@ -9,6 +9,8 @@ package Login;
 import Principal.Inicio;
 import com.sun.awt.AWTUtilities;
 import static java.lang.Thread.sleep;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,6 +28,7 @@ public class Login extends javax.swing.JFrame implements Conexion{
      */
 ResultSet rs = null;
 PreparedStatement pst=null;
+ String Pass="";
 
     public Login() {
         this.setUndecorated(true);
@@ -110,6 +113,7 @@ PreparedStatement pst=null;
         
         //un rapidin
         //Otro Rapidin
+        get_md5(this.txtPasswor.getText());
         this.validar();
     }//GEN-LAST:event_jBEntrarActionPerformed
 
@@ -125,7 +129,7 @@ PreparedStatement pst=null;
         int count=0;
     pst =conn.getConn().prepareStatement(sql);
     pst.setString(1, this.txtUsuario.getText());
-    pst.setString(2, this.txtPasswor.getText());
+    pst.setString(2, this.Pass);
    
     rs=pst.executeQuery();
     
@@ -137,7 +141,7 @@ PreparedStatement pst=null;
 //    Principal p = new Principal();
 //    p.setVisible(true);
         cu.setName(txtUsuario.getText());
-        cu.setPass(txtPasswor.getText());
+        cu.setPass(this.Pass);
         Inicio ini = new Inicio();
         ini.setVisible(true);
         this.dispose();
@@ -151,6 +155,37 @@ PreparedStatement pst=null;
          JOptionPane.showMessageDialog(null, "error");
     }
     }//Finaliza funcion validar
+     
+     
+     
+      public String get_md5(String CadenaOriginal){
+ 
+       
+        try {
+            if (!CadenaOriginal.equalsIgnoreCase("")) {
+ 
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                md.reset();
+                md.update(CadenaOriginal.getBytes());
+                byte bytes[] = md.digest();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytes.length; i++) {
+                    String hex = Integer.toHexString(0xff & bytes[i]);
+                    if (hex.length() == 1) {
+                        sb.append('0');
+                    }
+                    sb.append(hex);
+                }
+ 
+                this.Pass = sb.toString();
+            }
+        } catch (NoSuchAlgorithmException e) {
+            this.Pass = "Error inesperado";
+ 
+        }
+        return this.Pass;
+ 
+    }//Finaliza metodo para obtener md5+
     /**
      * @param args the command line arguments
      */
