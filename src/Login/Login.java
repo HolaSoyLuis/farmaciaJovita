@@ -113,12 +113,13 @@ PreparedStatement pst=null;
         
         //un rapidin
         //Otro Rapidin
-        get_md5(this.txtPasswor.getText());
+        get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
         this.validar();
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void txtPassworActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassworActionPerformed
         // TODO add your handling code here:
+        get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
         validar();
     }//GEN-LAST:event_txtPassworActionPerformed
 
