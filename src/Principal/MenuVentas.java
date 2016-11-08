@@ -27,7 +27,8 @@ import javax.swing.table.TableModel;
 public class MenuVentas extends javax.swing.JInternalFrame{
 
     private TableRowSorter trsFiltro;
-
+String Nit="";
+String id="";
     public MenuVentas() {
        //Inicio del metodo para establecer el estilo nimbus
         try {
@@ -384,20 +385,41 @@ public class MenuVentas extends javax.swing.JInternalFrame{
         countProducts = 0;
         TotalAll = 0.0;
         
+       
         String nit = JOptionPane.showInputDialog("Ingrese el nit del cliente\n");
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:\n");
+        this.Nit=nit;
         sqlScript.EnterClient(nit, nombre);
-        String id = sqlScript.getId(nit);
         
-        int rows = TableVentas.getRowCount();
-        String[][] articulos = new String[rows][2];
+        
+        this.ObteneridCliente();
+       
+        
         
         System.out.println(id);
         
         totalRefresh();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    public void ObteneridCliente(){
+         Stock s = new Stock();
+         
+        String sql= "select idCliente from cliente where Nit=?";
+        try{
+            s.pst=s.conn.prepareStatement(sql);
+            s.pst.setString(1, this.Nit);
+            s.rs=s.pst.executeQuery();
+//            JOptionPane.showMessageDialog(null, tmp);
+             while(s.rs.next()){
+              this.id=s.rs.getString("idCliente");
+//                this.jTextField1.setText(add1);
+              
+//                 System.out.println(s.idCategoria);
+    }
+        }catch(Exception e){
+            
+        }
+    }
  public void filtro() {
      //Filtro de busqueda con autocomplementacion dentro del Jtable  
      int columnaABuscar = 1;
