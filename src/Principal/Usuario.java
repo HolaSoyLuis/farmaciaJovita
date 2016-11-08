@@ -34,7 +34,7 @@ public void ingresar_usuario(String u, String c,String t){
     this.Contrasenia=c;
     this.Tipo=t;
     
-    String sql="insert into usuario(NombreUsuario,Contrasenia,Tipo) values(?,?,?)";
+    String sql="insert into usuario(NombreUsuario,Contrasenia,Tipo) values(?,md5(?),?)";
          try{
     pst =conn.prepareStatement(sql);
     //pst.setInt(1, Integer.parseInt(this.txt_id.getText()));
@@ -57,7 +57,6 @@ public void ingresar_usuario(String u, String c,String t){
     }
 
       // insert(ConexionJava.Conectar(), this.txt_id.getText(),this.txt_Nombre.getText());
-
     }//Finaliza ingresar usuario
     
     
