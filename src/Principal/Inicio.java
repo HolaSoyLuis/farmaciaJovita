@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -25,6 +27,8 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ImagesMenu/icono.png"));
         setIconImage(icon);
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.mostrarHora();
+        this.mostrarFecha();
     }
     
     @SuppressWarnings("unchecked")
@@ -56,11 +60,16 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        Hora_txt = new javax.swing.JMenu();
+        Fecha_txt = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logoFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/splashface/Images/fondo.png"))); // NOI18N
+
+        jDesktopPane1.setLayer(logoFondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -78,7 +87,6 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
                 .addComponent(logoFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
-        jDesktopPane1.setLayer(logoFondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 730));
 
@@ -324,11 +332,52 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
 
         JMenuBar1.add(jMenu3);
 
+        jMenu4.setText("                                                                                             ");
+        JMenuBar1.add(jMenu4);
+
+        Hora_txt.setBackground(new java.awt.Color(0, 169, 149));
+        Hora_txt.setForeground(new java.awt.Color(255, 255, 255));
+        Hora_txt.setText("HoraInicio");
+        Hora_txt.setFont(new java.awt.Font("Acid", 0, 18)); // NOI18N
+        JMenuBar1.add(Hora_txt);
+
+        Fecha_txt.setBackground(new java.awt.Color(0, 169, 149));
+        Fecha_txt.setForeground(new java.awt.Color(255, 255, 255));
+        Fecha_txt.setText("Fecha");
+        Fecha_txt.setFont(new java.awt.Font("Acid", 0, 18)); // NOI18N
+        JMenuBar1.add(Fecha_txt);
+
         setJMenuBar(JMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        
+    //Metodo para mostrar la fecha de hoy en menu inicio
+    public void mostrarFecha(){
+        Calendar c = new GregorianCalendar();
+        int month = c.get(Calendar.MONTH);
+         int year = c.get(Calendar.YEAR);
+          int day = c.get(Calendar.DAY_OF_MONTH);
+          
+         this.Fecha_txt.setText(day+"/"+month+"/"+year);
+         
+         
+    }// Finaliza Mostrar fecha
+    
+    
+    //Muestra la hora actual del sistema en el menu inicio
+    public void mostrarHora(){
+        Calendar c = new GregorianCalendar();
+       int Hora = c.get(Calendar.HOUR);
+       int Minutos = c.get(Calendar.MINUTE);
+       int Segundos = c.get(Calendar.SECOND);
+       int Formato = c.get(Calendar.AM_PM);
+               
+      
+       this.Hora_txt.setText(Hora+":"+Minutos+":"+Segundos);
+    }//
+    
     private void jMenuItem7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem7MouseClicked
         // Llamar a jpanel acerca de...
         Acercade acd= new Acercade ();
@@ -445,6 +494,8 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Fecha_txt;
+    private javax.swing.JMenu Hora_txt;
     private javax.swing.JMenuBar JMenuBar1;
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMArticulos;
@@ -455,6 +506,7 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem12;
