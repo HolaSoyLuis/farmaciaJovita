@@ -381,12 +381,20 @@ public class MenuVentas extends javax.swing.JInternalFrame{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //Venta de productos
+        countProducts = 0;
+        TotalAll = 0.0;
+        
         String nit = JOptionPane.showInputDialog("Ingrese el nit del cliente\n");
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:\n");
-        
         sqlScript.EnterClient(nit, nombre);
+        String id = sqlScript.getId(nit);
         
+        int rows = TableVentas.getRowCount();
+        String[][] articulos = new String[rows][2];
         
+        System.out.println(id);
+        
+        totalRefresh();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     

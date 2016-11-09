@@ -29,4 +29,47 @@ public class sqlScript implements Conexion{
             JOptionPane.showMessageDialog(null, "Error al ingresar el cliente\n" + e.getMessage());
         }
     }
+    
+    public static String getIdCliente(String nit, String nombre){
+        String sql = "select idCliente from farmacia.cliente where Nit = ? and Nombre = ?;";
+        ResultSet rs = null;
+        PreparedStatement pst=null;
+        String id = "";
+        try {
+            pst =conn.getConn().prepareStatement(sql);
+            pst.setString(1, nit);
+            pst.setString(2, nombre);
+            
+            pst.execute();
+            
+            //rs = pst.execute(sql);
+            
+            id = rs.getString("idCliente");
+            pst.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al ingresar el cliente\n" + e.getMessage());
+        }
+        return id;
+    }
+    
+    public static String getId(String nit){
+        String sql = "select idCliente from farmacia.cliente where Nit = ?;";
+        ResultSet rs = null;
+        PreparedStatement pst=null;
+        String id = "";
+        try {
+            pst =conn.getConn().prepareStatement(sql);
+            pst.setString(1, nit);
+            
+            pst.execute();
+            
+            rs = pst.executeQuery();
+            
+            id = rs.getString("idCliente");
+            pst.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al ingresar el cliente\n" + e.getMessage());
+        }
+        return id;
+    }
 }
