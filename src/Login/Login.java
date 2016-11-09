@@ -106,7 +106,9 @@ PreparedStatement pst=null;
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         // TODO add your handling code here:
-        //ESTE ES EL BOTON PARA INGRESAR EL LOGIIN
+        //ESTE ES EL BOTON PARA INGRESAR EL LOGIIN\
+        
+        //un rapidin
         this.validar();
     }//GEN-LAST:event_jBEntrarActionPerformed
 
