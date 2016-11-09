@@ -38,16 +38,7 @@ public class MenuVentas extends javax.swing.JInternalFrame{
         
         initComponents();
         //Conexion con DB para mostrar los articulos
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        String sql = "select idArticulo as ID, CodigoBarras as 'Codigo de Barras', nombreArticulo as Nombre, Lote, Fecha_Vencimiento as Vencimiento, PrecioVenta as Precio, Cantidad, Descripcion from articulo";
-        try {
-            pst = ConexionJava.Conectar().prepareStatement(sql);
-            rs = pst.executeQuery();
-            TableProductos.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR CONEXION DB");
-        }
+        refreshProductsTable();
        // this.addFocusListener(null);
         codigoBarras.requestFocus();
         this.codigoBarras.requestFocusInWindow();
@@ -196,6 +187,11 @@ public class MenuVentas extends javax.swing.JInternalFrame{
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 510, 100, 70));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagesMenu/UC/AÑADIR STOCK.png"))); // NOI18N
@@ -380,6 +376,11 @@ public class MenuVentas extends javax.swing.JInternalFrame{
         totalRefresh();
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //Venta de productos
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
  public void filtro() {
      //Filtro de busqueda con autocomplementacion dentro del Jtable  
@@ -413,6 +414,18 @@ public class MenuVentas extends javax.swing.JInternalFrame{
      TotalDelCarrito.setText(String.valueOf(TotalAll));
  }
     
+ public void refreshProductsTable(){
+     PreparedStatement pst = null;
+        ResultSet rs = null;
+        String sql = "select idArticulo as ID, CodigoBarras as 'Codigo de Barras', nombreArticulo as Nombre, Lote, Fecha_Vencimiento as Vencimiento, PrecioVenta as Precio, Cantidad, Descripcion from articulo";
+        try {
+            pst = ConexionJava.Conectar().prepareStatement(sql);
+            rs = pst.executeQuery();
+            TableProductos.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR CONEXION DB");
+        }
+ }
     private void txtFiltroKeyTyped(java.awt.event.KeyEvent evt) {                                   
         
     }
