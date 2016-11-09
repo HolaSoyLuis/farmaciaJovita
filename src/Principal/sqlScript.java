@@ -23,7 +23,8 @@ public class sqlScript implements Conexion{
             pst =conn.getConn().prepareStatement(sql);
             pst.setString(1, nit);
             pst.setString(2, nombre);
-            rs=pst.executeQuery();
+            pst.execute();
+            pst.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar el cliente\n" + e.getMessage());
         }

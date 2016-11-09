@@ -357,6 +357,8 @@ public class MenuVentas extends javax.swing.JInternalFrame{
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         //LIMPIAR VENTAS
+        countProducts = 0;
+        TotalAll = 0.0;
 
 //        DefaultTableModel modelo = new DefaultTableModel(0,2);
 //        Object[]  identifiers = new Object[2];
@@ -383,6 +385,8 @@ public class MenuVentas extends javax.swing.JInternalFrame{
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente:\n");
         
         sqlScript.EnterClient(nit, nombre);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
