@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -105,6 +106,7 @@ PreparedStatement pst=null;
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         // TODO add your handling code here:
+        //ESTE ES EL BOTON PARA INGRESAR EL LOGIIN
         this.validar();
     }//GEN-LAST:event_jBEntrarActionPerformed
 
