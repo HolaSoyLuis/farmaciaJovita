@@ -20,6 +20,8 @@ public class Usuario {
 ResultSet rs = null;
 PreparedStatement pst=null;
 
+
+
 String Usuario;
 String Contrasenia;
 String Tipo;
@@ -27,6 +29,34 @@ String Tipo;
          conn= ConexionJava.Conectar();
     }//Finaliza el constructor
     
+    
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
+
+    public ResultSet getRs() {
+        return rs;
+    }
+
+    public void setRs(ResultSet rs) {
+        this.rs = rs;
+    }
+
+    public PreparedStatement getPst() {
+        return pst;
+    }
+
+    public void setPst(PreparedStatement pst) {
+        this.pst = pst;
+    }
+
+
+
+
     
     //INGRESA EL USUARIO A LA BASE DE DATOS
 public void ingresar_usuario(String u, String c,String t){

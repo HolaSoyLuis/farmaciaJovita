@@ -24,7 +24,7 @@ public static Connection conn=null;
                 
              //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=01234");
              //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=root");
-             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=Gloria.");
+             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmacia?"+"user=root&password=01234");
        //  JOptionPane.showMessageDialog(null, "Conexion exitosa");
              
             

@@ -7,6 +7,8 @@
 package Login;
 
 import Principal.Inicio;
+import Principal.Stock;
+import Principal.User;
 import com.sun.awt.AWTUtilities;
 import static java.lang.Thread.sleep;
 import java.security.MessageDigest;
@@ -29,7 +31,9 @@ public class Login extends javax.swing.JFrame implements Conexion{
 ResultSet rs = null;
 PreparedStatement pst=null;
  String Pass="";
-
+    Stock s = new Stock();
+    String sql= "SELECT count(idArticulo) as conteo FROM farmacia.articulo where Fecha_Vencimiento-curdate()<=15 and Fecha_Vencimiento-curdate()>0;";
+    
     public Login() {
         this.setUndecorated(true);
         initComponents();
@@ -51,6 +55,7 @@ PreparedStatement pst=null;
         jBEntrar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(359, 242));
@@ -99,6 +104,14 @@ PreparedStatement pst=null;
         jLabel1.setAlignmentY(0.0F);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 250));
 
+        jButton1.setText("Prueba Obtener Prueba de Usuario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -113,15 +126,46 @@ PreparedStatement pst=null;
         
         //un rapidin
         //Otro Rapidin
-        get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
-        this.validar();
+                      
+        s.obteneridArticulosPorVencer(sql); //Obtiene la cantidad de articulos que estan proximos a vencer
+        
+            //Si la cantidad de productos a vencer es menor a 1 valida Inbresa el usuario si no envia una notificacion y luego valida al usuario
+        if(s.getConteo()<1){
+             get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
+            this.validar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Hay Articulos Proximos a Vencer");
+            get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
+            this.validar();
+        }
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void txtPassworActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassworActionPerformed
         // TODO add your handling code here:
-        get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
-        validar();
+        s.obteneridArticulosPorVencer(sql); //Obtiene la cantidad de articulos que estan proximos a vencer
+       //Si la cantidad de productos a vencer es menor a 1 valida Inbresa el usuario si no envia una notificacion y luego valida al usuario
+        if(s.getConteo()<1){
+             get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
+            this.validar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Hay Articulos Proximos a Vencer");
+            get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
+            this.validar();
+        }
+        //Valida el usuario
     }//GEN-LAST:event_txtPassworActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+//          User u = new User();
+//        String sql= "select Count(idUsuario) as conteo from usuario";
+//        u.obteneridUsuario(sql);
+        Stock s = new Stock();
+        String sql= "SELECT count(idArticulo) as conteo FROM farmacia.articulo where Fecha_Vencimiento-curdate()<=15 and Fecha_Vencimiento-curdate()>0;";
+        s.obteneridArticulosPorVencer(sql);
+   
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
      public void validar ()
     {
@@ -202,6 +246,7 @@ PreparedStatement pst=null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEntrar;
     private javax.swing.JButton jBSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField txtPasswor;
     private javax.swing.JTextField txtUsuario;

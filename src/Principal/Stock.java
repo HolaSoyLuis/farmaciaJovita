@@ -23,13 +23,17 @@ public class Stock extends Usuario {
      Integer idCategoria=0;
      String sql="";
      DefaultTableModel modelo = new DefaultTableModel();
-     
+      public Integer conteo=0;
+
     
     public Stock() {
     }
     
    
     
+    public Integer getConteo() {
+                return conteo;
+           }
     
     public void ingresar_Categoria(String c){
        this.Categoria=c;
@@ -70,5 +74,23 @@ public class Stock extends Usuario {
    }//Finaliza Mostrar Articulo 
     
     
+     //OBTIENE EL RESULTADO DE LA CANTIDAD DE ARTICULOS QUE ESTAN PROXIMOS A VENCER
+    public void obteneridArticulosPorVencer(String sql){
+       
+           try{
+                pst= conn.prepareStatement(sql);
+                rs=pst.executeQuery();
+//              JOptionPane.showMessageDialog(null, tmp);
+                    while(rs.next()){
+                     this.conteo=rs.getInt("conteo");
+//                          System.out.println("Resultado = "+this.conteo); //Muestra el numero de productos registados en  la base de datos
+         
+    }//Termina el while
+        }catch(Exception e){
+        
+        }
+    }//Finaliza Obtener Usuario
+   
+   
 }//Finaliza Stock
 
