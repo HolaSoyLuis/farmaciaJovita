@@ -28,7 +28,7 @@ String Tipo;
     }//Finaliza el constructor
     
     
-    
+    //INGRESA EL USUARIO A LA BASE DE DATOS
 public void ingresar_usuario(String u, String c,String t){
     this.Usuario=u;
     this.Contrasenia=c;
