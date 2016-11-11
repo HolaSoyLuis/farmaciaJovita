@@ -130,7 +130,7 @@ PreparedStatement pst=null;
         s.obteneridArticulosPorVencer(sql); //Obtiene la cantidad de articulos que estan proximos a vencer
         
             //Si la cantidad de productos a vencer es menor a 1 valida Inbresa el usuario si no envia una notificacion y luego valida al usuario
-        if(s.getConteo()<1){
+        if(s.getConteo()>1){
              get_md5(this.txtPasswor.getText()); // LLama al metodo para encriptar
             this.validar();
         }else{

@@ -3,14 +3,24 @@
  */
 package Principal;
 import Login.Conexion;
+import Login.ConexionJava;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.*;
+import java.sql.Connection;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -69,6 +79,8 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
 
         logoFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/splashface/Images/fondo.png"))); // NOI18N
 
+        jDesktopPane1.setLayer(logoFondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -85,7 +97,6 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
                 .addComponent(logoFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
-        jDesktopPane1.setLayer(logoFondo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 730));
 
@@ -127,6 +138,11 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         jMCartera.setAlignmentY(0.0F);
         jMCartera.setBorder(null);
         jMCartera.setContentAreaFilled(false);
+        jMCartera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMCarteraActionPerformed(evt);
+            }
+        });
         jMarchivo.add(jMCartera);
 
         JMenuBar1.add(jMarchivo);
@@ -488,6 +504,21 @@ public class Inicio extends javax.swing.JFrame implements Conexion{
         }
 setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMCarteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCarteraActionPerformed
+        // TODO add your handling code here:
+        ConexionJava conect  = new ConexionJava();
+        Connection c = conect.Conectar();
+        
+            try{
+    String dir = "C:\\Users\\werner\\Desktop\\farmaciaJovita\\src\\Principal\\report2.jrxml";
+    JasperReport reporte = JasperCompileManager.compileReport(dir);
+    JasperPrint mostrarReporte = JasperFillManager.fillReport(reporte, null, c);
+    JasperViewer.viewReport(mostrarReporte);
+        }catch (JRException ex){
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMCarteraActionPerformed
 
     /**
      * @param args the command line arguments

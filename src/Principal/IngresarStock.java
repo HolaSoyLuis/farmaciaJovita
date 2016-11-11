@@ -126,7 +126,7 @@ Stock s = new Stock();
                 precioVentaActionPerformed(evt);
             }
         });
-        getContentPane().add(precioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 80, 20));
+        getContentPane().add(precioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 80, 20));
 
         precioCompra.setForeground(new java.awt.Color(204, 204, 255));
         precioCompra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -144,7 +144,7 @@ Stock s = new Stock();
                 precioCompraActionPerformed(evt);
             }
         });
-        getContentPane().add(precioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 80, 20));
+        getContentPane().add(precioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 20));
 
         cantidadMinima.setForeground(new java.awt.Color(204, 204, 255));
         cantidadMinima.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -192,11 +192,6 @@ Stock s = new Stock();
                 jCcategoriaPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
-        jCcategoria.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCcategoriaMouseClicked(evt);
             }
         });
         getContentPane().add(jCcategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 140, 30));
@@ -263,17 +258,13 @@ Stock s = new Stock();
         });
         getContentPane().add(CodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 140, 20));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesPaneles/iconocategoria.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setText("Agregar Categoria");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 40, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 130, -1));
 
         jBguardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesPaneles/Guardarg.png"))); // NOI18N
         jBguardar.setAlignmentY(0.0F);
@@ -412,49 +403,35 @@ Stock s = new Stock();
     }//GEN-LAST:event_FondoMouseClicked
 
     private void jCcategoriaPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCcategoriaPopupMenuWillBecomeInvisible
-//   String tmp= (String)this.jCcategoria.getSelectedItem();
-//        String sql= "select * from categoria where Nombre=?";
-//        try{
-//            s.pst=s.conn.prepareStatement(sql);
-//            s.pst.setString(1, tmp);
-//            s.rs=s.pst.executeQuery();
-////            JOptionPane.showMessageDialog(null, tmp);
-//             while(s.rs.next()){
-//                String add1=s.rs.getString("idCategoria");
-////                this.jTextField1.setText(add1);
-//                s.idCategoria=Integer.parseInt(add1);
-////                 System.out.println(s.idCategoria);
-//                
-//                                                           }
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(null, e);        
-//        }
+   String tmp= (String)this.jCcategoria.getSelectedItem();
+        String sql= "select * from categoria where Nombre=?";
+        try{
+            s.pst=s.conn.prepareStatement(sql);
+            s.pst.setString(1, tmp);
+            s.rs=s.pst.executeQuery();
+//            JOptionPane.showMessageDialog(null, tmp);
+             while(s.rs.next()){
+                String add1=s.rs.getString("idCategoria");
+//                this.jTextField1.setText(add1);
+                s.idCategoria=Integer.parseInt(add1);
+//                 System.out.println(s.idCategoria);
+                
+                                                           }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);        
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jCcategoriaPopupMenuWillBecomeInvisible
 
     private void jCcategoriaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCcategoriaMouseMoved
- 
-        
-//        int itemCount = this.jCcategoria.getItemCount(); //Limpia el fillcombo
+// int itemCount = this.jCcategoria.getItemCount();
 //
 //    for(int i=0;i<itemCount;i++){
 //        this.jCcategoria.removeItemAt(0);
 //     }
-//    
 //        this.Fillcombo();
-         
-    }//GEN-LAST:event_jCcategoriaMouseMoved
-
-    private void jCcategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCcategoriaMouseClicked
- int itemCount = this.jCcategoria.getItemCount(); //Limpia el fillcombo
-
-    for(int i=0;i<itemCount;i++){
-        this.jCcategoria.removeItemAt(0);
-     }
-    
-        this.Fillcombo();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCcategoriaMouseClicked
+    }//GEN-LAST:event_jCcategoriaMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
